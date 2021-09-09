@@ -1,0 +1,583 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		34249C3D26E9356500AE548C /* simpleframeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34249C3C26E9356500AE548C /* simpleframeApp.swift */; };
+		34249C3F26E9356500AE548C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34249C3E26E9356500AE548C /* ContentView.swift */; };
+		34249C4126E9356800AE548C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34249C4026E9356800AE548C /* Assets.xcassets */; };
+		34249C4426E9356800AE548C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34249C4326E9356800AE548C /* Preview Assets.xcassets */; };
+		34249C4F26E9356800AE548C /* simpleframeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34249C4E26E9356800AE548C /* simpleframeTests.swift */; };
+		34249C5A26E9356800AE548C /* simpleframeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34249C5926E9356800AE548C /* simpleframeUITests.swift */; };
+		34BE528026EA39340043825F /* TestCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34BE527F26EA39340043825F /* TestCanvasView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		34249C4B26E9356800AE548C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 34249C3126E9356500AE548C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 34249C3826E9356500AE548C;
+			remoteInfo = simpleframe;
+		};
+		34249C5626E9356800AE548C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 34249C3126E9356500AE548C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 34249C3826E9356500AE548C;
+			remoteInfo = simpleframe;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		34249C3926E9356500AE548C /* simpleframe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = simpleframe.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		34249C3C26E9356500AE548C /* simpleframeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = simpleframeApp.swift; sourceTree = "<group>"; };
+		34249C3E26E9356500AE548C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		34249C4026E9356800AE548C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		34249C4326E9356800AE548C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		34249C4526E9356800AE548C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		34249C4A26E9356800AE548C /* simpleframeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = simpleframeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		34249C4E26E9356800AE548C /* simpleframeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = simpleframeTests.swift; sourceTree = "<group>"; };
+		34249C5026E9356800AE548C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		34249C5526E9356800AE548C /* simpleframeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = simpleframeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		34249C5926E9356800AE548C /* simpleframeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = simpleframeUITests.swift; sourceTree = "<group>"; };
+		34249C5B26E9356800AE548C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		34BE527F26EA39340043825F /* TestCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCanvasView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		34249C3626E9356500AE548C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		34249C4726E9356800AE548C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		34249C5226E9356800AE548C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		34249C3026E9356500AE548C = {
+			isa = PBXGroup;
+			children = (
+				34249C3B26E9356500AE548C /* simpleframe */,
+				34249C4D26E9356800AE548C /* simpleframeTests */,
+				34249C5826E9356800AE548C /* simpleframeUITests */,
+				34249C3A26E9356500AE548C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		34249C3A26E9356500AE548C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				34249C3926E9356500AE548C /* simpleframe.app */,
+				34249C4A26E9356800AE548C /* simpleframeTests.xctest */,
+				34249C5526E9356800AE548C /* simpleframeUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		34249C3B26E9356500AE548C /* simpleframe */ = {
+			isa = PBXGroup;
+			children = (
+				34249C3C26E9356500AE548C /* simpleframeApp.swift */,
+				34249C3E26E9356500AE548C /* ContentView.swift */,
+				34BE527F26EA39340043825F /* TestCanvasView.swift */,
+				34249C4026E9356800AE548C /* Assets.xcassets */,
+				34249C4526E9356800AE548C /* Info.plist */,
+				34249C4226E9356800AE548C /* Preview Content */,
+			);
+			path = simpleframe;
+			sourceTree = "<group>";
+		};
+		34249C4226E9356800AE548C /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				34249C4326E9356800AE548C /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		34249C4D26E9356800AE548C /* simpleframeTests */ = {
+			isa = PBXGroup;
+			children = (
+				34249C4E26E9356800AE548C /* simpleframeTests.swift */,
+				34249C5026E9356800AE548C /* Info.plist */,
+			);
+			path = simpleframeTests;
+			sourceTree = "<group>";
+		};
+		34249C5826E9356800AE548C /* simpleframeUITests */ = {
+			isa = PBXGroup;
+			children = (
+				34249C5926E9356800AE548C /* simpleframeUITests.swift */,
+				34249C5B26E9356800AE548C /* Info.plist */,
+			);
+			path = simpleframeUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		34249C3826E9356500AE548C /* simpleframe */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 34249C5E26E9356800AE548C /* Build configuration list for PBXNativeTarget "simpleframe" */;
+			buildPhases = (
+				34249C3526E9356500AE548C /* Sources */,
+				34249C3626E9356500AE548C /* Frameworks */,
+				34249C3726E9356500AE548C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = simpleframe;
+			productName = simpleframe;
+			productReference = 34249C3926E9356500AE548C /* simpleframe.app */;
+			productType = "com.apple.product-type.application";
+		};
+		34249C4926E9356800AE548C /* simpleframeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 34249C6126E9356800AE548C /* Build configuration list for PBXNativeTarget "simpleframeTests" */;
+			buildPhases = (
+				34249C4626E9356800AE548C /* Sources */,
+				34249C4726E9356800AE548C /* Frameworks */,
+				34249C4826E9356800AE548C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				34249C4C26E9356800AE548C /* PBXTargetDependency */,
+			);
+			name = simpleframeTests;
+			productName = simpleframeTests;
+			productReference = 34249C4A26E9356800AE548C /* simpleframeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		34249C5426E9356800AE548C /* simpleframeUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 34249C6426E9356800AE548C /* Build configuration list for PBXNativeTarget "simpleframeUITests" */;
+			buildPhases = (
+				34249C5126E9356800AE548C /* Sources */,
+				34249C5226E9356800AE548C /* Frameworks */,
+				34249C5326E9356800AE548C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				34249C5726E9356800AE548C /* PBXTargetDependency */,
+			);
+			name = simpleframeUITests;
+			productName = simpleframeUITests;
+			productReference = 34249C5526E9356800AE548C /* simpleframeUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		34249C3126E9356500AE548C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1250;
+				LastUpgradeCheck = 1250;
+				TargetAttributes = {
+					34249C3826E9356500AE548C = {
+						CreatedOnToolsVersion = 12.5.1;
+					};
+					34249C4926E9356800AE548C = {
+						CreatedOnToolsVersion = 12.5.1;
+						TestTargetID = 34249C3826E9356500AE548C;
+					};
+					34249C5426E9356800AE548C = {
+						CreatedOnToolsVersion = 12.5.1;
+						TestTargetID = 34249C3826E9356500AE548C;
+					};
+				};
+			};
+			buildConfigurationList = 34249C3426E9356500AE548C /* Build configuration list for PBXProject "simpleframe" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 34249C3026E9356500AE548C;
+			productRefGroup = 34249C3A26E9356500AE548C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				34249C3826E9356500AE548C /* simpleframe */,
+				34249C4926E9356800AE548C /* simpleframeTests */,
+				34249C5426E9356800AE548C /* simpleframeUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		34249C3726E9356500AE548C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				34249C4426E9356800AE548C /* Preview Assets.xcassets in Resources */,
+				34249C4126E9356800AE548C /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		34249C4826E9356800AE548C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		34249C5326E9356800AE548C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		34249C3526E9356500AE548C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				34249C3F26E9356500AE548C /* ContentView.swift in Sources */,
+				34249C3D26E9356500AE548C /* simpleframeApp.swift in Sources */,
+				34BE528026EA39340043825F /* TestCanvasView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		34249C4626E9356800AE548C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				34249C4F26E9356800AE548C /* simpleframeTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		34249C5126E9356800AE548C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				34249C5A26E9356800AE548C /* simpleframeUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		34249C4C26E9356800AE548C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 34249C3826E9356500AE548C /* simpleframe */;
+			targetProxy = 34249C4B26E9356800AE548C /* PBXContainerItemProxy */;
+		};
+		34249C5726E9356800AE548C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 34249C3826E9356500AE548C /* simpleframe */;
+			targetProxy = 34249C5626E9356800AE548C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		34249C5C26E9356800AE548C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		34249C5D26E9356800AE548C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		34249C5F26E9356800AE548C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"simpleframe/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = simpleframe/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.macblady.simpleframe;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		34249C6026E9356800AE548C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"simpleframe/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = simpleframe/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.macblady.simpleframe;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		34249C6226E9356800AE548C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = simpleframeTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.macblady.simpleframeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/simpleframe.app/simpleframe";
+			};
+			name = Debug;
+		};
+		34249C6326E9356800AE548C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = simpleframeTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.macblady.simpleframeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/simpleframe.app/simpleframe";
+			};
+			name = Release;
+		};
+		34249C6526E9356800AE548C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = simpleframeUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.macblady.simpleframeUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = simpleframe;
+			};
+			name = Debug;
+		};
+		34249C6626E9356800AE548C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = simpleframeUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.macblady.simpleframeUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = simpleframe;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		34249C3426E9356500AE548C /* Build configuration list for PBXProject "simpleframe" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				34249C5C26E9356800AE548C /* Debug */,
+				34249C5D26E9356800AE548C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		34249C5E26E9356800AE548C /* Build configuration list for PBXNativeTarget "simpleframe" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				34249C5F26E9356800AE548C /* Debug */,
+				34249C6026E9356800AE548C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		34249C6126E9356800AE548C /* Build configuration list for PBXNativeTarget "simpleframeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				34249C6226E9356800AE548C /* Debug */,
+				34249C6326E9356800AE548C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		34249C6426E9356800AE548C /* Build configuration list for PBXNativeTarget "simpleframeUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				34249C6526E9356800AE548C /* Debug */,
+				34249C6626E9356800AE548C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 34249C3126E9356500AE548C /* Project object */;
+}
