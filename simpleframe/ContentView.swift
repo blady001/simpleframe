@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var borderWidth: CGFloat = 50.0
+    private let imgPadding: CGFloat = 20
+    @State var borderWidth: CGFloat = 20
     @State var image: UIImage = UIImage(named: "nikisz")!
     
     var imageView: some View {
@@ -21,36 +22,32 @@ struct ContentView: View {
 ////                    .frame(width: 200, height: 200)
 //            .border(Color.pink, width: borderWidth)
         GeometryReader { geometry in
-//            Image(uiImage: image)
-//                .resizable()
-//                .scaledToFit()
-//                .padding()
-//                .frame(width: geometry.size.width, height: geometry.size.width, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
             ZStack {
                 Rectangle()
                     .fill(Color.green)
                     .frame(width: geometry.size.width, height: geometry.size.width, alignment: .center)
                 
+                Rectangle()
+                    .fill(Color.red)
+                    .frame(
+                        width: (image.size.width / image.size.height) * geometry.size.width - 2*imgPadding + borderWidth,
+                        height: geometry.size.width - 2*imgPadding + borderWidth,
+                        alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                
                 Image(uiImage: image)
                     .resizable()
+                    .padding(imgPadding)
                     .scaledToFit()
-//                    .padding()
                     .frame(width: geometry.size.width, height: geometry.size.width, alignment: .center)
                 
             }
         }
     }
     
-    var borderSliderView: some View {
-        VStack {
-            Slider(value: $borderWidth, in: 1...50)
-            Text("Choose border width")
-        }
-    }
-    
     var body: some View {
         VStack {
             imageView
+            Slider(value: $borderWidth, in: 0...40)
             Button("Print size") {
                 print("Image size: \(self.image.size.width)x\(self.image.size.height)")
             }

@@ -13,6 +13,7 @@
 		34249C4426E9356800AE548C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34249C4326E9356800AE548C /* Preview Assets.xcassets */; };
 		34249C4F26E9356800AE548C /* simpleframeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34249C4E26E9356800AE548C /* simpleframeTests.swift */; };
 		34249C5A26E9356800AE548C /* simpleframeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34249C5926E9356800AE548C /* simpleframeUITests.swift */; };
+		347E524626EBF1B600955C7C /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347E524526EBF1B600955C7C /* MainView.swift */; };
 		34BE528026EA39340043825F /* TestCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34BE527F26EA39340043825F /* TestCanvasView.swift */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +47,7 @@
 		34249C5526E9356800AE548C /* simpleframeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = simpleframeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		34249C5926E9356800AE548C /* simpleframeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = simpleframeUITests.swift; sourceTree = "<group>"; };
 		34249C5B26E9356800AE548C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		347E524526EBF1B600955C7C /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		34BE527F26EA39340043825F /* TestCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCanvasView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -103,6 +105,7 @@
 				34249C4026E9356800AE548C /* Assets.xcassets */,
 				34249C4526E9356800AE548C /* Info.plist */,
 				34249C4226E9356800AE548C /* Preview Content */,
+				347E524526EBF1B600955C7C /* MainView.swift */,
 			);
 			path = simpleframe;
 			sourceTree = "<group>";
@@ -263,6 +266,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				34249C3F26E9356500AE548C /* ContentView.swift in Sources */,
+				347E524626EBF1B600955C7C /* MainView.swift in Sources */,
 				34249C3D26E9356500AE548C /* simpleframeApp.swift in Sources */,
 				34BE528026EA39340043825F /* TestCanvasView.swift in Sources */,
 			);
