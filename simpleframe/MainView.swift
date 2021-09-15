@@ -10,36 +10,38 @@ import SwiftUI
 struct MainView: View {
     @State private var frameColor = Color.red
     @State private var frameSize: CGFloat = 0
-    @State private var inputImage = UIImage(named: "nikisz")! {
-        didSet {
-            self.imageWidth = inputImage.size.width
-            self.imageHeight = inputImage.size.height
-        }
-    }
-    @State private var imageWidth: CGFloat?
-    @State private var imageHeight: CGFloat?
+    @State private var inputImage = UIImage(named: "nikisz")!
     
     var body: some View {
-        GeometryReader { geometry in
-            VStack {
-                Image(uiImage: inputImage)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: geometry.size.width, height: geometry.size.width, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                    .border(frameColor, width: frameSize)
-                Spacer()
+        NavigationView {
+            GeometryReader { geometry in
                 VStack {
-                    ColorPicker("Select color", selection: $frameColor)
-                    Slider(value: $frameSize, in: 0...10, step: 1)
-                    Text("\(Int(frameSize))")
-                }.padding()
-            }
+                    Image(uiImage: inputImage)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(maxHeight: geometry.size.width)
+                        .border(frameColor, width: calculateBorderWidth(viewportFrameWidth: geometry.size.width))
+                    Spacer()
+                    VStack {
+                        ColorPicker("Select color", selection: $frameColor, supportsOpacity: false)
+                        Slider(value: $frameSize, in: 0...10, step: 1)
+                        Text("\(Int(frameSize))")
+                    }.padding()
+                }
+            }.padding(.top)
+            .navigationBarTitle("Add frame", displayMode: .inline)
+            .navigationBarItems(trailing:
+                Button(action: {
+                        print("clicked")
+                }) {
+                    Image(systemName: "square.and.arrow.down").imageScale(.large)
+                })
         }
     }
     
-//    func calculateBorderWidth() -> CGFloat {
-//        return frameSize * viewportFrameSize / 100
-//    }
+    func calculateBorderWidth(viewportFrameWidth: CGFloat) -> CGFloat {
+        return frameSize * viewportFrameWidth / 200
+    }
 }
 
 struct MainView_Previews: PreviewProvider {
