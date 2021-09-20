@@ -15,6 +15,8 @@
 		34249C5A26E9356800AE548C /* simpleframeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34249C5926E9356800AE548C /* simpleframeUITests.swift */; };
 		347E524626EBF1B600955C7C /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347E524526EBF1B600955C7C /* MainView.swift */; };
 		34BE528026EA39340043825F /* TestCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34BE527F26EA39340043825F /* TestCanvasView.swift */; };
+		34DC433626F9139600506A44 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DC433526F9139600506A44 /* ImagePicker.swift */; };
+		34DC433826F914E300506A44 /* ImagePickerTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DC433726F914E300506A44 /* ImagePickerTestView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		34249C5B26E9356800AE548C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		347E524526EBF1B600955C7C /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		34BE527F26EA39340043825F /* TestCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCanvasView.swift; sourceTree = "<group>"; };
+		34DC433526F9139600506A44 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		34DC433726F914E300506A44 /* ImagePickerTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerTestView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +110,8 @@
 				34249C4526E9356800AE548C /* Info.plist */,
 				34249C4226E9356800AE548C /* Preview Content */,
 				347E524526EBF1B600955C7C /* MainView.swift */,
+				34DC433526F9139600506A44 /* ImagePicker.swift */,
+				34DC433726F914E300506A44 /* ImagePickerTestView.swift */,
 			);
 			path = simpleframe;
 			sourceTree = "<group>";
@@ -265,8 +271,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34DC433826F914E300506A44 /* ImagePickerTestView.swift in Sources */,
 				34249C3F26E9356500AE548C /* ContentView.swift in Sources */,
 				347E524626EBF1B600955C7C /* MainView.swift in Sources */,
+				34DC433626F9139600506A44 /* ImagePicker.swift in Sources */,
 				34249C3D26E9356500AE548C /* simpleframeApp.swift in Sources */,
 				34BE528026EA39340043825F /* TestCanvasView.swift in Sources */,
 			);

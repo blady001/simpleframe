@@ -8,46 +8,51 @@
 import SwiftUI
 
 struct PreviewImageView: View {
-    @Environment(\.presentationMode) var presentationMode
-    let inputImage: UIImage
-    @State private var displayedImage: Image?
+    @Binding var isPresented: Bool
+    let inputImage: UIImage?
+    @State private var imageView: Image?
     
     var body: some View {
         VStack {
             Button("Press to dismiss") {
-                presentationMode.wrappedValue.dismiss()
+                isPresented = false
             }
-            displayedImage?
-                .resizable()
-                .scaledToFit()
-//                .frame(width: 200, height: 200, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+            if let imageView = imageView {
+                imageView
+                    .resizable()
+                    .scaledToFit()
+            } else {
+                Text("No image")
+            }
         }.onAppear(perform: loadImageBetter)
         .padding()
     }
     
-    private func loadImage() {
-        let borderWidth: CGFloat = 100.0
-        let size = inputImage.size
-        UIGraphicsBeginImageContext(size)
-        let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height);
-        inputImage.draw(in: rect, blendMode: .normal, alpha: 1.0)
-        
-        let context = UIGraphicsGetCurrentContext()
-        let borderRect = rect.insetBy(dx: borderWidth / 2, dy: borderWidth / 2)
-        
-        context?.setStrokeColor(CGColor(red: 1.0, green: 0.5, blue: 1.0, alpha: 1.0))
-        context?.setLineWidth(100.0)
-        context?.stroke(borderRect)
-        
-        let outputImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        if let oi = outputImage {
-            displayedImage = Image(uiImage: oi)
-        }
-    }
+//    private func loadImage() {
+//        let borderWidth: CGFloat = 100.0
+//        let size = inputImage.size
+//        UIGraphicsBeginImageContext(size)
+//        let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height);
+//        inputImage.draw(in: rect, blendMode: .normal, alpha: 1.0)
+//
+//        let context = UIGraphicsGetCurrentContext()
+//        let borderRect = rect.insetBy(dx: borderWidth / 2, dy: borderWidth / 2)
+//
+//        context?.setStrokeColor(CGColor(red: 1.0, green: 0.5, blue: 1.0, alpha: 1.0))
+//        context?.setLineWidth(100.0)
+//        context?.stroke(borderRect)
+//
+//        let outputImage = UIGraphicsGetImageFromCurrentImageContext()
+//        UIGraphicsEndImageContext()
+//
+//        if let oi = outputImage {
+//            displayedImage = Image(uiImage: oi)
+//        }
+//    }
     
     private func loadImageBetter() {
+        guard let inputImage =  inputImage else { return }
+        
         let borderWidth: CGFloat = 100.0
         let size = inputImage.size
         let imgRect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
@@ -64,25 +69,41 @@ struct PreviewImageView: View {
             
         }
         
-        displayedImage = Image(uiImage: outputImage)
+        imageView = Image(uiImage: outputImage)
     }
 }
 
 struct MainView: View {
     @State private var frameColor = Color.red
     @State private var frameSize: CGFloat = 0
-    @State private var inputImage = UIImage(named: "nikisz")!
+    @State private var inputImage: UIImage?
+    @State private var imageView: Image?
+    @State private var showingImagePicker = false
     @State private var previewImage = false
     
     var body: some View {
         NavigationView {
             GeometryReader { geometry in
                 VStack {
-                    Image(uiImage: inputImage)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(maxHeight: geometry.size.width)
-                        .border(frameColor, width: calculateBorderWidth(viewportFrameWidth: geometry.size.width))
+                    
+                    ZStack {
+                        Rectangle()
+                            .fill(Color.white)
+                            .frame(width: geometry.size.width, height: geometry.size.width, alignment: .center)
+                        
+                        if let imageView = imageView {
+                            imageView.resizable()
+                                .scaledToFit()
+                                .border(frameColor, width: calculateBorderWidth(viewportFrameWidth: geometry.size.width))
+                        } else {
+                            Button("Select image") {
+                                showingImagePicker.toggle()
+                            }.sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
+                                ImagePicker(image: self.$inputImage)
+                            }
+                        }
+                    }
+                    
                     Spacer()
                     VStack {
                         ColorPicker("Select color", selection: $frameColor, supportsOpacity: false)
@@ -99,9 +120,14 @@ struct MainView: View {
                     Image(systemName: "square.and.arrow.down").imageScale(.large)
                 })
             .sheet(isPresented: $previewImage) {
-                PreviewImageView(inputImage: inputImage)
+                PreviewImageView(isPresented: $previewImage, inputImage: inputImage)
             }
         }
+    }
+    
+    func loadImage() {
+        guard let inputImage =  inputImage else { return }
+        imageView = Image(uiImage: inputImage)
     }
     
     func calculateBorderWidth(viewportFrameWidth: CGFloat) -> CGFloat {
