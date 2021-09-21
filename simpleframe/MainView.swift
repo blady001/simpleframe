@@ -22,45 +22,56 @@ struct PreviewImageView: View {
                     .resizable()
                     .scaledToFit()
             } else {
-                Text("No image")
+                ProgressView("Processing...")
             }
-        }.onAppear(perform: loadImageBetter)
+        }
+        .onAppear(perform: loadImageInBackground)
         .padding()
     }
     
-//    private func loadImage() {
-//        let borderWidth: CGFloat = 100.0
-//        let size = inputImage.size
-//        UIGraphicsBeginImageContext(size)
-//        let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height);
-//        inputImage.draw(in: rect, blendMode: .normal, alpha: 1.0)
-//
-//        let context = UIGraphicsGetCurrentContext()
-//        let borderRect = rect.insetBy(dx: borderWidth / 2, dy: borderWidth / 2)
-//
-//        context?.setStrokeColor(CGColor(red: 1.0, green: 0.5, blue: 1.0, alpha: 1.0))
-//        context?.setLineWidth(100.0)
-//        context?.stroke(borderRect)
-//
-//        let outputImage = UIGraphicsGetImageFromCurrentImageContext()
-//        UIGraphicsEndImageContext()
-//
-//        if let oi = outputImage {
-//            displayedImage = Image(uiImage: oi)
-//        }
-//    }
+    //    private func loadImage() {
+    //        let borderWidth: CGFloat = 100.0
+    //        let size = inputImage.size
+    //        UIGraphicsBeginImageContext(size)
+    //        let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height);
+    //        inputImage.draw(in: rect, blendMode: .normal, alpha: 1.0)
+    //
+    //        let context = UIGraphicsGetCurrentContext()
+    //        let borderRect = rect.insetBy(dx: borderWidth / 2, dy: borderWidth / 2)
+    //
+    //        context?.setStrokeColor(CGColor(red: 1.0, green: 0.5, blue: 1.0, alpha: 1.0))
+    //        context?.setLineWidth(100.0)
+    //        context?.stroke(borderRect)
+    //
+    //        let outputImage = UIGraphicsGetImageFromCurrentImageContext()
+    //        UIGraphicsEndImageContext()
+    //
+    //        if let oi = outputImage {
+    //            displayedImage = Image(uiImage: oi)
+    //        }
+    //    }
     
-    private func loadImageBetter() {
-        guard let inputImage =  inputImage else { return }
+    private func loadImageInBackground() {
+        DispatchQueue.global(qos: .userInitiated).async {
+            if let processedImage = self.loadImageBetter() {
+                DispatchQueue.main.async {
+                    self.imageView = Image(uiImage: processedImage)
+                }
+            }
+        }
+    }
+    
+    private func loadImageBetter() -> UIImage? {
+        guard let inputImage =  inputImage else { return nil }
         
         let borderWidth: CGFloat = 100.0
         let size = inputImage.size
         let imgRect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
-//        let borderRect = imgRect.insetBy(dx: 2.0, dy: 2.0)
+        //        let borderRect = imgRect.insetBy(dx: 2.0, dy: 2.0)
         let renderer = UIGraphicsImageRenderer(size: size)
         let outputImage = renderer.image { ctx in
             ctx.cgContext.concatenate(CGAffineTransform(a: 1, b: 0, c: 0, d: -1, tx: 0, ty: size.height))
-
+            
             ctx.cgContext.draw(inputImage.cgImage!, in: imgRect)
             
             ctx.cgContext.setStrokeColor(CGColor(red: 1.0, green: 1.0, blue: 0.5, alpha: 1.0))
@@ -69,7 +80,7 @@ struct PreviewImageView: View {
             
         }
         
-        imageView = Image(uiImage: outputImage)
+        return outputImage
     }
 }
 
@@ -80,6 +91,8 @@ struct MainView: View {
     @State private var imageView: Image?
     @State private var showingImagePicker = false
     @State private var previewImage = false
+    @State private var discardDisabled = true
+    @State private var showingDiscardConfirmationAlert = false
     
     var body: some View {
         NavigationView {
@@ -111,27 +124,57 @@ struct MainView: View {
                         Text("\(Int(frameSize))")
                     }.padding()
                 }
-            }.padding(.top)
+            }
             .navigationBarTitle("Add frame", displayMode: .inline)
-            .navigationBarItems(trailing:
-                Button(action: {
-                    previewImage.toggle()
-                }) {
-                    Image(systemName: "square.and.arrow.down").imageScale(.large)
-                })
+            .navigationBarItems(
+                leading:
+                    Button(action: {
+                        showingDiscardConfirmationAlert = true
+                    }) {
+                        Image(systemName: "xmark").imageScale(.large)
+                    }.disabled(discardDisabled),
+                trailing:
+                    Button(action: {
+                        previewImage.toggle()
+                    }) {
+                        Image(systemName: "square.and.arrow.down").imageScale(.large)
+                    })
             .sheet(isPresented: $previewImage) {
                 PreviewImageView(isPresented: $previewImage, inputImage: inputImage)
+            }
+            .alert(isPresented: $showingDiscardConfirmationAlert) {
+                Alert(title: Text("Discard?"),
+                      message: Text("All changes will be lost."),
+                      primaryButton: .destructive(Text("Confirm")) {
+                        discardImage()
+                      },
+                      secondaryButton: .default(Text("Cancel"))
+                )
             }
         }
     }
     
-    func loadImage() {
+    private func loadImage() {
         guard let inputImage =  inputImage else { return }
         imageView = Image(uiImage: inputImage)
+        discardDisabled = false
     }
     
-    func calculateBorderWidth(viewportFrameWidth: CGFloat) -> CGFloat {
+    private func calculateBorderWidth(viewportFrameWidth: CGFloat) -> CGFloat {
         return frameSize * viewportFrameWidth / 200
+    }
+    
+    private func discardImage() {
+        imageView = nil
+        inputImage = nil
+        discardDisabled.toggle()
+    }
+    
+    private func saveImage() {
+        // TODO: start here - actually process image in background -> MAYBE ON A PROGRESS SHEET FOR NOW? -> would be kinda easier (create sheet responsible for processing the image)
+        guard let processedImage = inputImage else { return }
+        let imageSaver = ImageSaver()
+        imageSaver.writeToPhotoAlbum(image: processedImage)
     }
 }
 
