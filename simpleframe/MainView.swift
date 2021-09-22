@@ -7,92 +7,19 @@
 
 import SwiftUI
 
-struct PreviewImageView: View {
-    @Binding var isPresented: Bool
-    let inputImage: UIImage?
-    @State private var imageView: Image?
-    
-    var body: some View {
-        VStack {
-            Button("Press to dismiss") {
-                isPresented = false
-            }
-            if let imageView = imageView {
-                imageView
-                    .resizable()
-                    .scaledToFit()
-            } else {
-                ProgressView("Processing...")
-            }
-        }
-        .onAppear(perform: loadImageInBackground)
-        .padding()
-    }
-    
-    //    private func loadImage() {
-    //        let borderWidth: CGFloat = 100.0
-    //        let size = inputImage.size
-    //        UIGraphicsBeginImageContext(size)
-    //        let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height);
-    //        inputImage.draw(in: rect, blendMode: .normal, alpha: 1.0)
-    //
-    //        let context = UIGraphicsGetCurrentContext()
-    //        let borderRect = rect.insetBy(dx: borderWidth / 2, dy: borderWidth / 2)
-    //
-    //        context?.setStrokeColor(CGColor(red: 1.0, green: 0.5, blue: 1.0, alpha: 1.0))
-    //        context?.setLineWidth(100.0)
-    //        context?.stroke(borderRect)
-    //
-    //        let outputImage = UIGraphicsGetImageFromCurrentImageContext()
-    //        UIGraphicsEndImageContext()
-    //
-    //        if let oi = outputImage {
-    //            displayedImage = Image(uiImage: oi)
-    //        }
-    //    }
-    
-    private func loadImageInBackground() {
-        DispatchQueue.global(qos: .userInitiated).async {
-            if let processedImage = self.loadImageBetter() {
-                DispatchQueue.main.async {
-                    self.imageView = Image(uiImage: processedImage)
-                }
-            }
-        }
-    }
-    
-    private func loadImageBetter() -> UIImage? {
-        guard let inputImage =  inputImage else { return nil }
-        
-        let borderWidth: CGFloat = 100.0
-        let size = inputImage.size
-        let imgRect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
-        //        let borderRect = imgRect.insetBy(dx: 2.0, dy: 2.0)
-        let renderer = UIGraphicsImageRenderer(size: size)
-        let outputImage = renderer.image { ctx in
-            ctx.cgContext.concatenate(CGAffineTransform(a: 1, b: 0, c: 0, d: -1, tx: 0, ty: size.height))
-            
-            ctx.cgContext.draw(inputImage.cgImage!, in: imgRect)
-            
-            ctx.cgContext.setStrokeColor(CGColor(red: 1.0, green: 1.0, blue: 0.5, alpha: 1.0))
-            ctx.cgContext.setLineWidth(borderWidth)
-            ctx.stroke(imgRect)
-            
-        }
-        
-        return outputImage
-    }
-}
 
 struct MainView: View {
     @State private var frameColor = Color.red
     @State private var frameSize: CGFloat = 0
+    
     @State private var inputImage: UIImage?
     @State private var imageView: Image?
+    
     @State private var showingImagePicker = false
-    @State private var previewImage = false
     @State private var discardDisabled = true
     @State private var showingDiscardConfirmationAlert = false
+    @State private var showingImageSavingView = false
+    @State private var isSaving = false
     
     var body: some View {
         NavigationView {
@@ -102,7 +29,8 @@ struct MainView: View {
                     ZStack {
                         Rectangle()
                             .fill(Color.white)
-                            .frame(width: geometry.size.width, height: geometry.size.width, alignment: .center)
+                            .scaledToFit()
+//                            .frame(width: geometry.size.width, height: geometry.size.width, alignment: .center)
                         
                         if let imageView = imageView {
                             imageView.resizable()
@@ -115,7 +43,7 @@ struct MainView: View {
                                 ImagePicker(image: self.$inputImage)
                             }
                         }
-                    }
+                    }.frame(maxHeight: geometry.size.width)
                     
                     Spacer()
                     VStack {
@@ -135,12 +63,12 @@ struct MainView: View {
                     }.disabled(discardDisabled),
                 trailing:
                     Button(action: {
-                        previewImage.toggle()
+                        processAndSaveImage()
                     }) {
                         Image(systemName: "square.and.arrow.down").imageScale(.large)
                     })
-            .sheet(isPresented: $previewImage) {
-                PreviewImageView(isPresented: $previewImage, inputImage: inputImage)
+            .sheet(isPresented: $showingImageSavingView) {
+                ImageSavingView(isPresented: $showingImageSavingView, isSaving: $isSaving)
             }
             .alert(isPresented: $showingDiscardConfirmationAlert) {
                 Alert(title: Text("Discard?"),
@@ -170,11 +98,35 @@ struct MainView: View {
         discardDisabled.toggle()
     }
     
-    private func saveImage() {
+    private func processAndSaveImage() {
+        guard let beginImage = inputImage else { return }
+        let relativeScreenWidth = UIScreen.main.bounds.width
+        
+        showingImageSavingView.toggle()
+        isSaving.toggle()
+        
+        DispatchQueue.global(qos: .userInitiated).async {
+            let outputImage = processImage(image: beginImage, screenWidth: relativeScreenWidth)
+            saveImage(outputImage)
+            DispatchQueue.main.async {
+                self.isSaving.toggle()
+            }
+        }
+    }
+    
+    private func processImage(image: UIImage, screenWidth: CGFloat) -> UIImage {
+        func convertToCgColor(_ color: Color) -> CGColor {
+            UIColor(color).cgColor
+        }
+        let processor = ImageProcessor()
+        let outputImage = processor.addBorders(inputImage: image, screenWidth: screenWidth, screenBorderWidth: calculateBorderWidth(viewportFrameWidth: screenWidth), borderColor: convertToCgColor(frameColor))
+        return outputImage
+    }
+    
+    private func saveImage(_ image: UIImage) {
         // TODO: start here - actually process image in background -> MAYBE ON A PROGRESS SHEET FOR NOW? -> would be kinda easier (create sheet responsible for processing the image)
-        guard let processedImage = inputImage else { return }
         let imageSaver = ImageSaver()
-        imageSaver.writeToPhotoAlbum(image: processedImage)
+        imageSaver.writeToPhotoAlbum(image: image)
     }
 }
 
