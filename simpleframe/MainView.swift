@@ -10,7 +10,7 @@ import SwiftUI
 
 struct MainView: View {
     @State private var frameColor = Color.red
-    @State private var frameSize: CGFloat = 0
+    @State private var frameSizeSliderValue: CGFloat = 0
     
     @State private var inputImage: UIImage?
     @State private var imageView: Image?
@@ -27,15 +27,10 @@ struct MainView: View {
                 VStack {
                     
                     ZStack {
-                        Rectangle()
-                            .fill(Color.white)
-                            .scaledToFit()
-//                            .frame(width: geometry.size.width, height: geometry.size.width, alignment: .center)
-                        
                         if let imageView = imageView {
                             imageView.resizable()
                                 .scaledToFit()
-                                .border(frameColor, width: calculateBorderWidth(viewportFrameWidth: geometry.size.width))
+                                .border(frameColor, width: calculateViewportBorderWidth(viewportFrameWidth: geometry.size.width))
                         } else {
                             Button("Select image") {
                                 showingImagePicker.toggle()
@@ -48,12 +43,12 @@ struct MainView: View {
                     Spacer()
                     VStack {
                         ColorPicker("Select color", selection: $frameColor, supportsOpacity: false)
-                        Slider(value: $frameSize, in: 0...10, step: 1)
-                        Text("\(Int(frameSize))")
+                        Slider(value: $frameSizeSliderValue, in: 0...10, step: 1)
+                        Text("\(Int(frameSizeSliderValue))")
                     }.padding()
                 }
             }
-            .navigationBarTitle("Add frame", displayMode: .inline)
+            .navigationBarTitle("SimpleFrame", displayMode: .inline)
             .navigationBarItems(
                 leading:
                     Button(action: {
@@ -88,8 +83,8 @@ struct MainView: View {
         discardDisabled = false
     }
     
-    private func calculateBorderWidth(viewportFrameWidth: CGFloat) -> CGFloat {
-        return frameSize * viewportFrameWidth / 200
+    private func calculateViewportBorderWidth(viewportFrameWidth: CGFloat) -> CGFloat {
+        return frameSizeSliderValue * viewportFrameWidth / 200
     }
     
     private func discardImage() {
@@ -106,7 +101,7 @@ struct MainView: View {
         isSaving.toggle()
         
         DispatchQueue.global(qos: .userInitiated).async {
-            let outputImage = processImage(image: beginImage, screenWidth: relativeScreenWidth)
+            let outputImage = processImage(image: beginImage, viewportWidth: relativeScreenWidth)
             saveImage(outputImage)
             DispatchQueue.main.async {
                 self.isSaving.toggle()
@@ -114,12 +109,14 @@ struct MainView: View {
         }
     }
     
-    private func processImage(image: UIImage, screenWidth: CGFloat) -> UIImage {
+    private func processImage(image: UIImage, viewportWidth: CGFloat) -> UIImage {
         func convertToCgColor(_ color: Color) -> CGColor {
             UIColor(color).cgColor
         }
         let processor = ImageProcessor()
-        let outputImage = processor.addBorders(inputImage: image, screenWidth: screenWidth, screenBorderWidth: calculateBorderWidth(viewportFrameWidth: screenWidth), borderColor: convertToCgColor(frameColor))
+        let viewportBorderWidth = calculateViewportBorderWidth(viewportFrameWidth: viewportWidth)
+        let borderColor = convertToCgColor(frameColor)
+        let outputImage = processor.addBorders(inputImage: image, screenWidth: viewportWidth, screenBorderWidth: viewportBorderWidth, borderColor: borderColor)
         return outputImage
     }
     
