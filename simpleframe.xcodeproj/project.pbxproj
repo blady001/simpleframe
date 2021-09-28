@@ -8,16 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		34249C3D26E9356500AE548C /* simpleframeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34249C3C26E9356500AE548C /* simpleframeApp.swift */; };
-		34249C3F26E9356500AE548C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34249C3E26E9356500AE548C /* ContentView.swift */; };
 		34249C4126E9356800AE548C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34249C4026E9356800AE548C /* Assets.xcassets */; };
 		34249C4426E9356800AE548C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34249C4326E9356800AE548C /* Preview Assets.xcassets */; };
 		34249C4F26E9356800AE548C /* simpleframeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34249C4E26E9356800AE548C /* simpleframeTests.swift */; };
 		34249C5A26E9356800AE548C /* simpleframeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34249C5926E9356800AE548C /* simpleframeUITests.swift */; };
 		3431459326FA741300AF124B /* ImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3431459226FA741300AF124B /* ImageSaver.swift */; };
-		347E524626EBF1B600955C7C /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347E524526EBF1B600955C7C /* MainView.swift */; };
-		34BE528026EA39340043825F /* TestCanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34BE527F26EA39340043825F /* TestCanvasView.swift */; };
+		347E524626EBF1B600955C7C /* EditImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347E524526EBF1B600955C7C /* EditImageView.swift */; };
 		34DC433626F9139600506A44 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DC433526F9139600506A44 /* ImagePicker.swift */; };
-		34DC433826F914E300506A44 /* ImagePickerTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DC433726F914E300506A44 /* ImagePickerTestView.swift */; };
+		34E757AC27038A44009CE0A7 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E757AB27038A44009CE0A7 /* MainView.swift */; };
+		34E757AE27038B7C009CE0A7 /* TestNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E757AD27038B7C009CE0A7 /* TestNavigationView.swift */; };
 		34FE3C7D26FBB82500A2A448 /* ImageSavingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34FE3C7C26FBB82500A2A448 /* ImageSavingView.swift */; };
 		34FE3C7F26FBB98800A2A448 /* ImageProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34FE3C7E26FBB98800A2A448 /* ImageProcessor.swift */; };
 /* End PBXBuildFile section */
@@ -42,7 +41,6 @@
 /* Begin PBXFileReference section */
 		34249C3926E9356500AE548C /* simpleframe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = simpleframe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34249C3C26E9356500AE548C /* simpleframeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = simpleframeApp.swift; sourceTree = "<group>"; };
-		34249C3E26E9356500AE548C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		34249C4026E9356800AE548C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		34249C4326E9356800AE548C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		34249C4526E9356800AE548C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -53,10 +51,10 @@
 		34249C5926E9356800AE548C /* simpleframeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = simpleframeUITests.swift; sourceTree = "<group>"; };
 		34249C5B26E9356800AE548C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3431459226FA741300AF124B /* ImageSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaver.swift; sourceTree = "<group>"; };
-		347E524526EBF1B600955C7C /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
-		34BE527F26EA39340043825F /* TestCanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCanvasView.swift; sourceTree = "<group>"; };
+		347E524526EBF1B600955C7C /* EditImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditImageView.swift; sourceTree = "<group>"; };
 		34DC433526F9139600506A44 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
-		34DC433726F914E300506A44 /* ImagePickerTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerTestView.swift; sourceTree = "<group>"; };
+		34E757AB27038A44009CE0A7 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		34E757AD27038B7C009CE0A7 /* TestNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestNavigationView.swift; sourceTree = "<group>"; };
 		34FE3C7C26FBB82500A2A448 /* ImageSavingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSavingView.swift; sourceTree = "<group>"; };
 		34FE3C7E26FBB98800A2A448 /* ImageProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageProcessor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -110,17 +108,16 @@
 			isa = PBXGroup;
 			children = (
 				34249C3C26E9356500AE548C /* simpleframeApp.swift */,
-				34249C3E26E9356500AE548C /* ContentView.swift */,
-				34BE527F26EA39340043825F /* TestCanvasView.swift */,
 				34249C4026E9356800AE548C /* Assets.xcassets */,
 				34249C4526E9356800AE548C /* Info.plist */,
 				34249C4226E9356800AE548C /* Preview Content */,
-				347E524526EBF1B600955C7C /* MainView.swift */,
+				347E524526EBF1B600955C7C /* EditImageView.swift */,
 				34DC433526F9139600506A44 /* ImagePicker.swift */,
-				34DC433726F914E300506A44 /* ImagePickerTestView.swift */,
 				3431459226FA741300AF124B /* ImageSaver.swift */,
 				34FE3C7C26FBB82500A2A448 /* ImageSavingView.swift */,
 				34FE3C7E26FBB98800A2A448 /* ImageProcessor.swift */,
+				34E757AB27038A44009CE0A7 /* MainView.swift */,
+				34E757AD27038B7C009CE0A7 /* TestNavigationView.swift */,
 			);
 			path = simpleframe;
 			sourceTree = "<group>";
@@ -280,15 +277,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				34DC433826F914E300506A44 /* ImagePickerTestView.swift in Sources */,
 				34FE3C7F26FBB98800A2A448 /* ImageProcessor.swift in Sources */,
+				34E757AC27038A44009CE0A7 /* MainView.swift in Sources */,
 				3431459326FA741300AF124B /* ImageSaver.swift in Sources */,
-				34249C3F26E9356500AE548C /* ContentView.swift in Sources */,
-				347E524626EBF1B600955C7C /* MainView.swift in Sources */,
+				347E524626EBF1B600955C7C /* EditImageView.swift in Sources */,
 				34DC433626F9139600506A44 /* ImagePicker.swift in Sources */,
 				34249C3D26E9356500AE548C /* simpleframeApp.swift in Sources */,
+				34E757AE27038B7C009CE0A7 /* TestNavigationView.swift in Sources */,
 				34FE3C7D26FBB82500A2A448 /* ImageSavingView.swift in Sources */,
-				34BE528026EA39340043825F /* TestCanvasView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -447,6 +443,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"simpleframe/Preview Content\"";
+				DEVELOPMENT_TEAM = 8TLUPZMTC4;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = simpleframe/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -468,6 +465,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"simpleframe/Preview Content\"";
+				DEVELOPMENT_TEAM = 8TLUPZMTC4;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = simpleframe/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
