@@ -8,8 +8,32 @@
 import SwiftUI
 
 struct TestNavigationView: View {
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @State private var showingDismissAlert = false
+    
     var body: some View {
-        Text("In the second view!")
+        VStack {
+            Text("In the second view!")
+        }
+        .navigationBarBackButtonHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .navigation) {
+                Button {
+                    showingDismissAlert.toggle()
+                } label: {
+                    Image(systemName: "chevron.backward").imageScale(.large)
+                }
+            }
+        }
+        .alert(isPresented: $showingDismissAlert) {
+            Alert(
+                title: Text("Dismiss?"),
+                primaryButton: .default(Text("Cancel")),
+                secondaryButton: .destructive(Text("Ok")) {
+                    self.presentationMode.wrappedValue.dismiss()
+                }
+            )
+        }
     }
 }
 
