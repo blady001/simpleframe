@@ -13,13 +13,10 @@ struct MainView: View {
     var body: some View {
         NavigationView {
             VStack {
+                HeaderView()
+//                    .background(Rectangle().fill(Color.red))
+                Spacer()
                 
-                NavigationLink(isActive: $imageSelected) {
-                    TestNavigationView()
-                } label: {
-                    EmptyView()
-                }
-
                 Button {
                     imageSelected.toggle()
                 } label: {
@@ -29,18 +26,28 @@ struct MainView: View {
                         Text("Choose image")
                     }
                 }
-            }
-            .navigationTitle("SimpleFrame")
-//            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .bottomBar) {
-                    Button {
-                        print("abc")
-                    } label: {
-                        Image(systemName: "info.circle")
-                    }
+//                .background(Rectangle().fill(Color.green))
+                
+                Spacer()
+                
+                NavigationLink(isActive: $imageSelected) {
+                    TestNavigationView()
+                } label: {
+                    EmptyView()
                 }
             }
+            .navigationBarHidden(true)
+//            .navigationTitle("SimpleFrame")
+//            .navigationBarTitleDisplayMode(.inline)
+//            .toolbar {
+//                ToolbarItem(placement: .bottomBar) {
+//                    Button {
+//                        print("abc")
+//                    } label: {
+//                        Image(systemName: "info.circle")
+//                    }
+//                }
+//            }
         }
     }
 }
