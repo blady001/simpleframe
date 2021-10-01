@@ -24,6 +24,13 @@ struct TestNavigationView: View {
                     Image(systemName: "chevron.backward").imageScale(.large)
                 }
             }
+            ToolbarItem(placement: .primaryAction) {
+                Button {
+                    
+                } label: {
+                    Image(systemName: "square.and.arrow.down").imageScale(.large)
+                }
+            }
         }
         .alert(isPresented: $showingDismissAlert) {
             Alert(
