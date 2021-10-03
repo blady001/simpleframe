@@ -9,6 +9,8 @@ import SwiftUI
 
 struct MainView: View {
     @State private var imageSelected = false
+    @State private var showingImagePicker = false
+    @State private var image: UIImage?
     
     var body: some View {
         NavigationView {
@@ -18,36 +20,30 @@ struct MainView: View {
                 Spacer()
                 
                 Button {
-                    imageSelected.toggle()
+                    showingImagePicker.toggle()
                 } label: {
                     VStack {
                         Image(systemName: "plus.viewfinder")
                             .font(.system(size: 64, weight: .thin))
                         Text("Choose image")
                     }
+                }.sheet(isPresented: $showingImagePicker) {
+                    imageSelected.toggle()
+                } content: {
+                    ImagePicker(image: $image)
                 }
+                
 //                .background(Rectangle().fill(Color.green))
                 
                 Spacer()
                 
                 NavigationLink(isActive: $imageSelected) {
-                    TestNavigationView()
+                    TestNavigationView(image: $image)
                 } label: {
                     EmptyView()
                 }
             }
             .navigationBarHidden(true)
-//            .navigationTitle("SimpleFrame")
-//            .navigationBarTitleDisplayMode(.inline)
-//            .toolbar {
-//                ToolbarItem(placement: .bottomBar) {
-//                    Button {
-//                        print("abc")
-//                    } label: {
-//                        Image(systemName: "info.circle")
-//                    }
-//                }
-//            }
         }
     }
 }

@@ -10,10 +10,16 @@ import SwiftUI
 struct TestNavigationView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @State private var showingDismissAlert = false
+    @Binding var image: UIImage?
     
     var body: some View {
         VStack {
             Text("In the second view!")
+            if let image = image {
+                Image(uiImage: image)
+                    .resizable()
+                    .scaledToFit()
+            }
         }
         .navigationBarBackButtonHidden(true)
         .toolbar {
@@ -37,15 +43,20 @@ struct TestNavigationView: View {
                 title: Text("Dismiss?"),
                 primaryButton: .default(Text("Cancel")),
                 secondaryButton: .destructive(Text("Ok")) {
-                    self.presentationMode.wrappedValue.dismiss()
+                    dismissView()
                 }
             )
         }
+    }
+    
+    private func dismissView() {
+        image = nil
+        presentationMode.wrappedValue.dismiss()
     }
 }
 
 struct TestNavigationView_Previews: PreviewProvider {
     static var previews: some View {
-        TestNavigationView()
+        TestNavigationView(image: .constant(UIImage(named: "nikisz")!))
     }
 }
