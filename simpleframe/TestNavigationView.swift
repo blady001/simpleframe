@@ -37,10 +37,14 @@ struct TestNavigationView: View {
                 }
             }
             ToolbarItem(placement: .primaryAction) {
-                Button {
-                    showingBanner.toggle()
-                } label: {
-                    Image(systemName: "square.and.arrow.down").imageScale(.large)
+                if !showingBanner {
+                    Button {
+                        showingBanner.toggle()
+                    } label: {
+                        Image(systemName: "square.and.arrow.down").imageScale(.large)
+                    }
+                } else {
+                    ProgressView()
                 }
             }
         }
