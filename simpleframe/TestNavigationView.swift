@@ -10,6 +10,8 @@ import SwiftUI
 struct TestNavigationView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @State private var showingDismissAlert = false
+    @State private var showingBanner = false
+    @State private var bannerData = BannerModifier.BannerData(title: "Test banner", detail: "Content ABC", type: .success)
     @Binding var image: UIImage?
     
     var body: some View {
@@ -20,10 +22,14 @@ struct TestNavigationView: View {
                     .resizable()
                     .scaledToFit()
             }
+            Spacer()
         }
+//        .background(Color.blue)
+        .banner(data: $bannerData, show: $showingBanner)
         .navigationBarBackButtonHidden(true)
+        .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-            ToolbarItem(placement: .navigation) {
+            ToolbarItem(placement: .navigationBarLeading) {
                 Button {
                     showingDismissAlert.toggle()
                 } label: {
@@ -32,7 +38,7 @@ struct TestNavigationView: View {
             }
             ToolbarItem(placement: .primaryAction) {
                 Button {
-                    
+                    showingBanner.toggle()
                 } label: {
                     Image(systemName: "square.and.arrow.down").imageScale(.large)
                 }
@@ -57,6 +63,8 @@ struct TestNavigationView: View {
 
 struct TestNavigationView_Previews: PreviewProvider {
     static var previews: some View {
-        TestNavigationView(image: .constant(UIImage(named: "nikisz")!))
+        NavigationView {
+            TestNavigationView(image: .constant(UIImage(named: "nikisz")!))
+        }
     }
 }

@@ -43,6 +43,7 @@ struct MainView: View {
                     EmptyView()
                 }
             }
+//            .background(Color.yellow)
             .navigationBarHidden(true)
         }
     }
