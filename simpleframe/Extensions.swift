@@ -12,3 +12,9 @@ extension View {
         self.modifier(BannerModifier(data: data, show: show))
     }
 }
+
+extension Color {
+    func forcedCgColor() -> CGColor {
+        UIColor(self).cgColor
+    }
+}

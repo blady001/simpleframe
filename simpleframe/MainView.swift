@@ -38,7 +38,7 @@ struct MainView: View {
                 Spacer()
                 
                 NavigationLink(isActive: $imageSelected) {
-                    TestNavigationView(image: $image)
+                    BorderAddingView(image: $image)
                 } label: {
                     EmptyView()
                 }
