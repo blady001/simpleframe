@@ -9,6 +9,7 @@ import SwiftUI
 
 struct BorderAddingView: View {
     
+//    @Environment(\.colorScheme) var colorScheme
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @State private var showingDismissAlert = false
     @State private var showingSavingResultBanner = false
@@ -24,17 +25,24 @@ struct BorderAddingView: View {
         GeometryReader { geometry in
             VStack {
                 
-                Spacer()
                 HStack {
-                    if let image = image {
-                        Image(uiImage: image)
-                            .resizable()
-                            .scaledToFit()
-                            .border(frameColor, width: calculateViewportBorderWidth(viewportFrameWidth: geometry.size.width))
+                    VStack {
+                        Spacer()
+                        HStack {
+                            if let image = image {
+                                Image(uiImage: image)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .border(frameColor, width: calculateViewportBorderWidth(viewportFrameWidth: geometry.size.width))
+                            }
+                        }.frame(maxHeight: geometry.size.width)
+                        Spacer()
                     }
-                }.frame(maxHeight: geometry.size.width)
-                Spacer()
+                }
+                .frame(maxWidth: geometry.size.width)
+                .background(Color.gray)
                 
+                        
                 VStack {
                     ColorPicker("Select color", selection: $frameColor, supportsOpacity: false)
                     Slider(value: $frameSizeSliderValue, in: 0...10, step: 1) { editing in
@@ -133,6 +141,7 @@ struct BorderAddingView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             BorderAddingView(image: .constant(UIImage(named: "nikisz")!))
+                .preferredColorScheme(.dark)
         }
     }
 }
