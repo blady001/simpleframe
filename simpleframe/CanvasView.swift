@@ -22,31 +22,22 @@ struct CanvasView: View {
         VStack {
             ZStack {
                 GeometryReader { geometry in
-//                    Text("\(geometry.size.width)x\(geometry.size.height)")
                     if let image = image {
-//                        let imgMaxFrameSize = getImgMaxFrameSize(canvasSize: geometry.size, image: image)
-                        let imgDisplaySize = getImgMaxSize(imageSize: image.size, containerSize: geometry.size)
-                        let imgDisplayFrameSize = downscaleAlongLongerDimension(source: imgDisplaySize, scale: getDisplayImgScale())
-//                        let borderRectSize = downscaleAlongLongerDimension(source: imgDisplaySize, scale: getRectScale())
-                        let borderRectSize = getBorderRectSize(imageSize: imgDisplayFrameSize, borderSizePercentage: borderPercentage)
-//                        let _ = print("Frame: \(geometry.size)")
-//                        let _ = print("ImgMax: \(imgDisplaySize)")
-//                        let _ = print("ImgScale: \(imgDisplayFrameSize)")
+                        let imgDisplaySize = getImgSize(imageSize: image.size, containerSize: geometry.size)
+                        let borderRectSize = getBorderRectSize(imageSize: imgDisplaySize)
                         Rectangle()
                             .fill(.red)
                             .frame(width: borderRectSize.width, height: borderRectSize.height)
                             .position(x: geometry.size.width / 2, y: geometry.size.height / 2)
                         Image(uiImage: image)
                             .resizable()
-                            .frame(width: imgDisplayFrameSize.width, height: imgDisplayFrameSize.height)
+                            .frame(width: imgDisplaySize.width, height: imgDisplaySize.height)
                             .position(x: geometry.size.width / 2, y: geometry.size.height / 2)
-    //                            .position(x: geometry.size.width / 2, y: geometry.size.height / 2)
-    //                            .frame(width: geometry.size.width - 50)
 //                            .background(Color.blue)
                     }
                 }
             }
-            .background(Color.orange)
+            .background(Color.green)
             VStack {
                 Slider(value: $borderPercentage, in: 0...MAX_BORDER_SIZE_IN_PERCENTAGE, step: SLIDER_STEP)
             }
@@ -74,15 +65,7 @@ struct CanvasView: View {
         presentationMode.wrappedValue.dismiss()
     }
     
-//    private func getDisplayImgScale() -> CGFloat {
-//        return (100.0 - 2 * MAX_BORDER_SIZE_IN_PERCENTAGE) / 100.0
-//    }
-    
-    private func getDisplayImgScale() -> CGFloat {
-        return 100.0 / (100.0 + 2 * MAX_BORDER_SIZE_IN_PERCENTAGE)
-    }
-    
-    private func getImgMaxSize(imageSize: CGSize, containerSize: CGSize) -> CGSize {
+    private func getImgSize(imageSize: CGSize, containerSize: CGSize) -> CGSize {
         // real image dimensions
         let rx = imageSize.width
         let ry = imageSize.height
@@ -94,48 +77,53 @@ struct CanvasView: View {
         let cyx = cy / cx
         let ryx = ry / rx
         
-        // scaled image dimensions
+        // max image dimensions
         let ix, iy: CGFloat
+        
+        // scaled image dimensions
+        let fx, fy: CGFloat
+        
+        let downscaleFactor = 100.0 / (100.0 + 2 * MAX_BORDER_SIZE_IN_PERCENTAGE)
+        let upscaleFactor = (100.0 + 2 * MAX_BORDER_SIZE_IN_PERCENTAGE) / 100.0
         
         if (cyx < ryx) {
             // image is restricted vertically
             ix = (cy * rx) / ry
             iy = cy
+            
+            if (ix > iy) {
+                // image is horizontal
+                // TODO: Double check current eq (taken from horizontal restriction + vertical image)
+                fy = iy / (1 + ix * (upscaleFactor - 1) / iy)
+            } else {
+                // image is vertical
+                fy = iy * downscaleFactor
+            }
+            fx = ix * fy / iy
+            
         } else {
             // image is restricted horizontally
             ix = cx
             iy = (cx * ry) / rx
+            
+            if (ix > iy) {
+                // image is horizontal
+                fx = ix * downscaleFactor
+            } else {
+                // image is vertical
+                fx = ix / (1 + iy * (upscaleFactor - 1) / ix)
+                
+            }
+            fy = iy * fx / ix
         }
-        return CGSize(width: ix, height: iy)
+        return CGSize(width: fx, height: fy)
     }
     
-    private func downscaleAlongLongerDimension(source: CGSize, scale: CGFloat) -> CGSize {
-        if (scale == 1.0) {
-            return CGSize(width: source.width, height: source.height)
-        }
-        
-        let ix = source.width
-        let iy = source.height
-        
-        let sx, sy: CGFloat
-        
-        if (source.width > source.height) {
-            // scale along X
-            sx = scale * ix;
-            sy = sx * iy / ix
-        } else {
-            // scale along Y
-            sy = scale * iy
-            sx = sy * ix / iy
-        }
-        return CGSize(width: sx, height: sy)
-    }
-    
-    private func getBorderRectSize(imageSize: CGSize, borderSizePercentage: CGFloat) -> CGSize {
+    private func getBorderRectSize(imageSize: CGSize) -> CGSize {
         let ix = imageSize.width
         let iy = imageSize.height
         
-        let scaleFactor: CGFloat = (100.0 + 2.0 * borderSizePercentage) / 100.0
+        let scaleFactor: CGFloat = (100.0 + 2.0 * borderPercentage) / 100.0
         
         let bx, by: CGFloat
         
