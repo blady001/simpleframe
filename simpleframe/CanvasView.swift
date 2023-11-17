@@ -15,6 +15,9 @@ struct CanvasView: View {
     
     @State private var borderPercentage: CGFloat = 0
     @State private var borderColor: Color = Color.black
+    @State private var isSaving: Bool = false
+    @State private var showResultBanner: Bool = false
+    @State private var resultBannerBinding = BannerModifier.BannerData(title: "Success!", detail: "Photo saved to gallery.", type: .success)
     
     var MAX_BORDER_SIZE_IN_PERCENTAGE: CGFloat = 10
     var SLIDER_STEP: CGFloat = 1
@@ -59,7 +62,20 @@ struct CanvasView: View {
                     Image(systemName: "chevron.backward").imageScale(.large)
                 }
             }
+            ToolbarItem(placement: .primaryAction) {
+                if !isSaving {
+                    Button {
+                        isSaving = true
+                        processAndSaveImage()
+                    } label: {
+                        Image(systemName: "square.and.arrow.down").imageScale(.large)
+                    }
+                } else {
+                    ProgressView()
+                }
+            }
         }
+        .banner(data: $resultBannerBinding, show: $showResultBanner)
     }
     
     private func dismissView() {
@@ -140,6 +156,26 @@ struct CanvasView: View {
         return CGSize(width: bx, height: by)
     }
     
+    private func processAndSaveImage() {
+        guard let image = image else { return }
+        
+        // TODO: Add error handling
+        DispatchQueue.global(qos: .userInitiated).async {
+            // TODO: implement
+            //            let outputImage = processImage(image)
+//            saveImage(outputImage)
+            DispatchQueue.main.async {
+                onSavingFinished()
+            }
+        }
+    }
+    
+    private func onSavingFinished() {
+        isSaving = false
+        // TODO: Add that
+        // shouldAskBeforeDismissing = false
+        showResultBanner = true
+    }
 }
 
 #Preview {
