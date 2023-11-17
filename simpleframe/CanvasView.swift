@@ -14,6 +14,7 @@ struct CanvasView: View {
     @Binding var image: UIImage?
     
     @State private var borderPercentage: CGFloat = 0
+    @State private var borderColor: Color = Color.black
     
     var MAX_BORDER_SIZE_IN_PERCENTAGE: CGFloat = 10
     var SLIDER_STEP: CGFloat = 1
@@ -26,21 +27,22 @@ struct CanvasView: View {
                         let imgDisplaySize = getImgSize(imageSize: image.size, containerSize: geometry.size)
                         let borderRectSize = getBorderRectSize(imageSize: imgDisplaySize)
                         Rectangle()
-                            .fill(.red)
+                            .fill(borderColor)
                             .frame(width: borderRectSize.width, height: borderRectSize.height)
                             .position(x: geometry.size.width / 2, y: geometry.size.height / 2)
                         Image(uiImage: image)
                             .resizable()
                             .frame(width: imgDisplaySize.width, height: imgDisplaySize.height)
                             .position(x: geometry.size.width / 2, y: geometry.size.height / 2)
-//                            .background(Color.blue)
                     }
                 }
             }
             .background(Color.green)
             VStack {
+                ColorPicker("Select color", selection: $borderColor, supportsOpacity: false)
                 Slider(value: $borderPercentage, in: 0...MAX_BORDER_SIZE_IN_PERCENTAGE, step: SLIDER_STEP)
             }
+            .padding()
             .background(Color.purple)
         }
         .navigationBarBackButtonHidden(true)
