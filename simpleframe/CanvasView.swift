@@ -40,13 +40,13 @@ struct CanvasView: View {
                     }
                 }
             }
-            .background(Color.green)
+//            .background(Color.green)
             VStack {
                 ColorPicker("Select color", selection: $borderColor, supportsOpacity: false)
                 Slider(value: $borderPercentage, in: 0...MAX_BORDER_SIZE_IN_PERCENTAGE, step: SLIDER_STEP)
             }
             .padding()
-            .background(Color.purple)
+//            .background(Color.purple)
         }
         .navigationBarBackButtonHidden(true)
         .navigationBarTitleDisplayMode(.inline)
