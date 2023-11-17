@@ -23,6 +23,7 @@
 		34E757AE27038B7C009CE0A7 /* TestNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E757AD27038B7C009CE0A7 /* TestNavigationView.swift */; };
 		34FE3C7D26FBB82500A2A448 /* ImageSavingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34FE3C7C26FBB82500A2A448 /* ImageSavingView.swift */; };
 		34FE3C7F26FBB98800A2A448 /* ImageProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34FE3C7E26FBB98800A2A448 /* ImageProcessor.swift */; };
+		6F40973F2B07E54F00F95020 /* Processor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F40973E2B07E54F00F95020 /* Processor.swift */; };
 		6FA9D27C2AEEB54A00267CDB /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA9D27B2AEEB54A00267CDB /* CanvasView.swift */; };
 /* End PBXBuildFile section */
 
@@ -66,6 +67,7 @@
 		34E757AD27038B7C009CE0A7 /* TestNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestNavigationView.swift; sourceTree = "<group>"; };
 		34FE3C7C26FBB82500A2A448 /* ImageSavingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSavingView.swift; sourceTree = "<group>"; };
 		34FE3C7E26FBB98800A2A448 /* ImageProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageProcessor.swift; sourceTree = "<group>"; };
+		6F40973E2B07E54F00F95020 /* Processor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Processor.swift; sourceTree = "<group>"; };
 		6FA9D27B2AEEB54A00267CDB /* CanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -133,6 +135,7 @@
 				34E757AD27038B7C009CE0A7 /* TestNavigationView.swift */,
 				34E7164F2704D9B8004EFB00 /* HeaderView.swift */,
 				6FA9D27B2AEEB54A00267CDB /* CanvasView.swift */,
+				6F40973E2B07E54F00F95020 /* Processor.swift */,
 			);
 			path = simpleframe;
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 				34E757AC27038A44009CE0A7 /* MainView.swift in Sources */,
 				3431459326FA741300AF124B /* ImageSaver.swift in Sources */,
 				347E524626EBF1B600955C7C /* EditImageView.swift in Sources */,
+				6F40973F2B07E54F00F95020 /* Processor.swift in Sources */,
 				34DC433626F9139600506A44 /* ImagePicker.swift in Sources */,
 				34249C3D26E9356500AE548C /* simpleframeApp.swift in Sources */,
 				34E757AE27038B7C009CE0A7 /* TestNavigationView.swift in Sources */,

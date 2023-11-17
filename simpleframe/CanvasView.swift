@@ -163,11 +163,17 @@ struct CanvasView: View {
         DispatchQueue.global(qos: .userInitiated).async {
             // TODO: implement
             //            let outputImage = processImage(image)
-//            saveImage(outputImage)
+            let outputImage = addBorders(to: image, color: borderColor.forcedCgColor(), size: borderPercentage)
+            saveImage(outputImage)
             DispatchQueue.main.async {
                 onSavingFinished()
             }
         }
+    }
+    
+    private func saveImage(_ image: UIImage) {
+        let imageSaver = ImageSaver()
+        imageSaver.writeToPhotoAlbum(image: image)
     }
     
     private func onSavingFinished() {
