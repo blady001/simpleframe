@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MainView: View {
-    @State private var imageSelected = false
+    @State private var isImageSelected = false
     @State private var showingImagePicker = false
     @State private var image: UIImage?
     
@@ -16,7 +16,6 @@ struct MainView: View {
         NavigationView {
             VStack {
                 HeaderView()
-//                    .background(Rectangle().fill(Color.red))
                 Spacer()
                 
                 Button {
@@ -28,23 +27,21 @@ struct MainView: View {
                         Text("Choose image")
                     }
                 }.sheet(isPresented: $showingImagePicker) {
-                    imageSelected.toggle()
+                    if (self.image != nil) {
+                        isImageSelected = true
+                    }
                 } content: {
                     ImagePicker(image: $image)
                 }
                 
-//                .background(Rectangle().fill(Color.green))
-                
                 Spacer()
                 
-                NavigationLink(isActive: $imageSelected) {
-//                    BorderAddingView(image: $image)
+                NavigationLink(isActive: $isImageSelected) {
                     CanvasView(image: $image)
                 } label: {
                     EmptyView()
                 }
             }
-//            .background(Color.yellow)
             .navigationBarHidden(true)
         }
     }
